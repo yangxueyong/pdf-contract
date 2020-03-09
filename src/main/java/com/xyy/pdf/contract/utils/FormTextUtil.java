@@ -1,4 +1,4 @@
-package com.xyy.pdf.contract;
+package com.xyy.pdf.contract.utils;
 
 import com.itextpdf.text.pdf.AcroFields;
 import com.itextpdf.text.pdf.PdfReader;
@@ -10,6 +10,9 @@ import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 表单文本框替换
+ */
 public class FormTextUtil {
     public static void main(String[] args) {
         String inputFileName = "D:\\tmp\\tmp1\\借条_原始.pdf";
@@ -35,7 +38,8 @@ public class FormTextUtil {
             for (String key : data.keySet()) {
                 form.setField(key, data.get(key).toString());
             }
-            ps.setFormFlattening(true);
+            //是否禁用表单可写 （禁用之后，表单将不再可写）
+//            ps.setFormFlattening(true);
             System.out.println("===============PDF导出成功=============");
         } catch (Exception e) {
             System.out.println("===============PDF导出失败=============");
