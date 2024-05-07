@@ -1,6 +1,7 @@
 package com.xyy.pdf.contract.utils;
 
 import com.itextpdf.text.pdf.AcroFields;
+import com.itextpdf.text.pdf.PRAcroForm;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
 
@@ -14,7 +15,7 @@ import java.util.Map;
  * 表单文本框替换
  */
 public class FormTextUtil {
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         String inputFileName = "D:\\tmp\\tmp1\\借条_原始.pdf";
         String outputFileName = "D:\\tmp\\tmp1\\借条_new.pdf";
         OutputStream os = null;
@@ -54,4 +55,22 @@ public class FormTextUtil {
             }
         }
     }
+
+    public static void main(String[] args) {
+        String inputFileName = "/Users/yxy/work/java/github/pdf-contract/data/借条_new.pdf";
+        OutputStream os = null;
+        PdfStamper ps = null;
+        PdfReader reader = null;
+        try {
+            // 读入pdf表单
+            reader = new PdfReader(inputFileName);
+            String jkrsfz1 = reader.getAcroFields().getField("jkrsfz");
+            System.out.println("jkrsfz1->" + jkrsfz1);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
